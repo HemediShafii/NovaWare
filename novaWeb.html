@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NovaWare Technologies</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            overflow-x: hidden; /* Disable horizontal scrolling */
+        }
+        header {
+            background-color: #0077b6;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        header img {
+            width: 150px; /* Adjust logo size */
+            margin-right: 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        header h2 {
+            margin: 5px 0 0;
+            font-size: 20px;
+        }
+
+        /* Navigation Menu Styles */
+        nav {
+            background-color: #023e8a;
+            overflow: hidden;
+            width: 100%;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        /* Hamburger Menu */
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+        }
+        /* Mobile Styles */
+        .nav-links {
+            display: flex;
+        }
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background-color: #023e8a;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                z-index: 1;
+            }
+            nav a {
+                width: 100%;
+                text-align: left;
+                padding: 12px 20px;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('images/2b92046a-e6bc-4d09-bb76-082683706707.png') no-repeat center center/cover;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            background-size: cover;
+        }
+        .hero h2 {
+            font-size: 48px;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 18px;
+            margin-top: 15px;
+        }
+        .cta-button {
+            background-color: #00b4d8;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .cta-button:hover {
+            background-color: #0096c7;
+        }
+
+        /* Services Section */
+        #services {
+            padding: 60px 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        #services h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+        .services-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .service-item {
+            background-color: white;
+            padding: 30px;
+            width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .service-item h3 {
+            margin-top: 10px;
+            font-size: 24px;
+        }
+        .service-item p {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        /* Our Team Section */
+        #team {
+            padding: 60px 20px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+        #team h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+        .team-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .team-member {
+            width: 250px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .team-member img {
+            width: 150px;
+            border-radius: 50%;
+        }
+        .team-member h3 {
+            margin-top: 15px;
+            font-size: 20px;
+        }
+        .team-member p {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Contact Section Styling */
+        #contact {
+            padding: 60px 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .contact-item {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: left;
+            font-size: 16px;
+        }
+        .contact-item i {
+            font-size: 24px;
+            color: #00b4d8;
+            margin-right: 10px;
+        }
+        .contact-item a {
+            color: #023e8a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Form Styling */
+        .contact-form {
+            background-color: #ffffff;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+        .contact-form button {
+            background-color: #00b4d8;
+            color: white;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: #0096c7;
+        }
+
+        /* Google Map Embed with Border */
+        .map-container {
+            margin: 40px 0;
+            border: 5px solid #00b4d8;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-details {
+                flex-direction: column;
+                align-items: center;
+            }
+            .services-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="images/ChatGPT Image Apr 15, 2025, 06_20_53 AM.png" alt="NovaWare Logo">
+        <div>
+            <h1>NovaWare Technologies</h1>
+            <h2>Smart Software. Real Impact.</h2>
+        </div>
+        <div class="menu-icon" id="menu-icon">
+            &#9776; <!-- Hamburger Icon -->
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-links" id="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#services">Services</a>
+            <a href="#team">Our Team</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h2>Innovating Tomorrow’s Software, Today</h2>
+        <p>We craft cutting-edge software solutions that power businesses, empower users, and shape the future.</p>
+        <a href="#contact" class="cta-button">Get Started</a>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="services-container">
+            <div class="service-item">
+                <i class="fas fa-cogs"></i>
+                <h3>Custom Software Development</h3>
+                <p>Tailored software solutions for your unique business needs, designed to enhance productivity and performance.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-cloud"></i>
+                <h3>Cloud Solutions</h3>
+                <p>Secure, scalable, and efficient cloud computing services to streamline operations and reduce costs.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Mobile App Development</h3>
+                <p>Mobile apps that engage users and increase your business’s reach on iOS and Android platforms.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section id="team">
+        <h2>Meet Our Team</h2>
+        <div class="team-container">
+            <div class="team-member">
+                <img src="images/1682361247121.jpg" alt="Hemedi Kilangiro">
+                <h3>Hemedi Kilangiro</h3>
+                <p>CEO & Founder</p>
+            </div>
+            <div class="team-member">
+                <img src="images/25e23384-cc2a-43bc-b863-118b84178443.png" alt="Team Member">
+                <h3>Jane Doe</h3>
+                <p>Lead Developer</p>
+            </div>
+            <div class="team-member">
+                <img src="images/4dadac9a-ee40-4ad4-8043-9ff45f6fc306.png" alt="Team Member">
+                <h3>John Smith</h3>
+                <p>Product Manager</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-details">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <p>Email: <a href="mailto:info@novaware.tech">info@novaware.tech</a></p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <p>Phone: +255 XXX XXX XXX</p>
+            </div>
+        </div>
+
+        <!-- Google Map -->
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15728.506214551527!2d39.18473916264217!3d-6.7923548452840275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185c50870c0d4a07%3A0x285219b05345e94b!2sDar%20es%20Salaam%2C%20Tanzania!5e0!3m2!1sen!2sus!4v1582921797242!5m2!1sen!2sus" width="100%" height="450" frameborder="0" style="border:0;"></iframe>
+        </div>
+
+        <!-- Contact Form -->
+        <form class="contact-form" action="mailto:info@novaware.tech" method="POST" enctype="multipart/form-data">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 NovaWare Technologies. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const menuIcon = document.getElementById("menu-icon");
+        const navLinks = document.getElementById("nav-links");
+
+        menuIcon.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+    </script>
+</body>
+</html>
